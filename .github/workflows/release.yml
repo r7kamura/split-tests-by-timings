@@ -1,0 +1,10 @@
+name: release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    uses: r7kamura/workflows/.github/workflows/release-action-with-version.yml@main

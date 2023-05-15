@@ -1,0 +1,44 @@
+name: split-tests-by-timings
+description: Split test files based on JUnit XML reports.
+inputs:
+  reports:
+    description: Path to directory where JUnit XML reports are stored.
+    required: true
+  glob:
+    description: Glob pattern to search test files.
+    required: true
+  index:
+    description: 0-based index of test node.
+    required: true
+  total:
+    description: Total count of test nodes.
+    required: true
+outputs:
+  paths:
+    description: Paths of test files to run.
+    value: ${{ steps.split-tests.outputs.paths }}
+runs:
+  using: composite
+  steps:
+    - run: |
+        curl -L --output split-test https://github.com/mtsmfm/split-test/releases/download/v1.0.0/split-test-x86_64-unknown-linux-gnu
+        chmod +x split-test
+      shell: bash
+    - id: split-tests
+      run: |
+        PATHS=$(
+          ./split-test \
+            --junit-xml-report-dir "${{ inputs.reports }}" \
+            --node-index "${{ inputs.index }}" \
+            --node-total "${{ inputs.total }}" \
+            --tests-glob "${{ inputs.glob }}" |
+            tr '\n' ' '
+        )
+        echo "paths=${PATHS}"
+        echo "paths=${PATHS}" >> $GITHUB_OUTPUT
+      shell: bash
+    - run: rm split-test
+      shell: bash
+branding:
+  color: green
+  icon: grid

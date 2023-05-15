@@ -1,0 +1,20 @@
+name: bump-request
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version to change to.
+        required: true
+        type: string
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: r7kamura/bump-request@v0
+        with:
+          command: |
+            sed -i -r 's/([0-9]+\.[0-9]+\.[0-9]+)/${{ inputs.version }}/' VERSION
+          version: ${{ inputs.version }}
