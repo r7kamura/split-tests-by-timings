@@ -22,7 +22,7 @@ GitHub Action to split test files based on JUnit XML reports, as [`circleci test
 ### Outputs
 
 - `paths`
-    - Paths of test files in a space-separated string.
+    - Relative paths of test files in a space-separated string.
     - e.g. `spec/models/user_spec.rb spec/models/post_spec.rb`
 
 ### Example

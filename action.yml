@@ -32,6 +32,7 @@ runs:
             --node-index "${{ inputs.index }}" \
             --node-total "${{ inputs.total }}" \
             --tests-glob "${{ inputs.glob }}" |
+            sed "s;^$(pwd)/;;" |
             tr '\n' ' '
         )
         echo "paths=${PATHS}"
