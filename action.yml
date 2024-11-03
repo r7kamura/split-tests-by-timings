@@ -13,6 +13,10 @@ inputs:
   total:
     description: Total count of test nodes.
     required: true
+  working-directory:
+    description: Working directory to run the action.
+    required: false
+    default: .
 outputs:
   paths:
     description: Paths of test files to run.
@@ -24,6 +28,7 @@ runs:
         curl -L --output split-test https://github.com/mtsmfm/split-test/releases/download/v1.0.0/split-test-x86_64-unknown-linux-gnu
         chmod +x split-test
       shell: bash
+      working-directory: ${{ inputs.working-directory }}
     - id: split-tests
       run: |
         PATHS=$(
@@ -38,8 +43,10 @@ runs:
         echo "paths=${PATHS}"
         echo "paths=${PATHS}" >> $GITHUB_OUTPUT
       shell: bash
+      working-directory: ${{ inputs.working-directory }}
     - run: rm split-test
       shell: bash
+      working-directory: ${{ inputs.working-directory }}
 branding:
   color: green
   icon: grid
