@@ -18,6 +18,9 @@ GitHub Action to split test files based on JUnit XML reports, as [`circleci test
 - `total`
     - Total count of test nodes.
     - e.g. `4`
+- `working-directory` (optional, default: `.`)
+    - Working directory to run the action.
+    - e.g. `path/to/app`
 
 ### Outputs
 
