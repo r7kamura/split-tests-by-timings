@@ -18,11 +18,15 @@ GitHub Action to split test files based on JUnit XML reports, as [`circleci test
 - `total`
     - Total count of test nodes.
     - e.g. `4`
-- `working-directory` (optional, default: `.`)
+- `working-directory`
     - Working directory to run the action.
+    - optional
+    - default: `.`
     - e.g. `path/to/app`
-- `architecture` (optional, default: `x86_64`)
+- `architecture`
     - CPU architecture for `mtsmfm/split-test` binary.
+    - optional
+    - default: `x86_64`
     - e.g. `aarch64`
 
 ### Outputs
