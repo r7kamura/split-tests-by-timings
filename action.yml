@@ -29,7 +29,7 @@ runs:
   using: composite
   steps:
     - run: |
-        curl -L --output split-test https://github.com/mtsmfm/split-test/releases/download/v1.1.0/split-test-x86_64-unknown-linux-gnu
+        curl -L --output split-test https://github.com/mtsmfm/split-test/releases/download/v1.1.0/split-test-${{ inputs.architecture }}-unknown-linux-gnu
         chmod +x split-test
       shell: bash
       working-directory: ${{ inputs.working-directory }}
