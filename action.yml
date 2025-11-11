@@ -17,6 +17,10 @@ inputs:
     description: Working directory to run the action.
     required: false
     default: .
+  architecture:
+    description: CPU architecture (x864_64 or aarch64)
+    required: false
+    default: x86_64
 outputs:
   paths:
     description: Paths of test files to run.
