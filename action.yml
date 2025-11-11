@@ -18,7 +18,7 @@ inputs:
     required: false
     default: .
   architecture:
-    description: CPU architecture (x864_64 or aarch64)
+    description: CPU architecture (x86_64 or aarch64)
     required: false
     default: x86_64
 outputs:
